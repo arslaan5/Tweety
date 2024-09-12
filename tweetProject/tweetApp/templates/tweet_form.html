@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}Tweety{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mt-4">
+    {% if form.instance.pk %}
+    Edit Tweety
+    {% else %}
+    Create Tweety
+    {% endif %}
+</h1>
+
+<div class="container">
+    <form class="form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type="submit">Submit</button>
+        <a class="btn btn-secondary" href="{% url 'tweet_list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock %}
